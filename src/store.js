@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
 
 export const NEWTEXT = 'NEWTEXT';
 
-export const newText = () =>({
-    type: NEWTEXT
+export const newText = (text) =>({
+    type: NEWTEXT,
+    payload:text
 });
 
 const initialState = {
@@ -45,12 +45,17 @@ And here. | Okay. | I think we get it.
 ![React Logo w/ Text](https://goo.gl/Umyytc)`
 };
 
-const middleware = [thunk];
 
-const rootReducer = (state = {initialState}, action) =>{
+const rootReducer = (state = initialState, action) =>{
+  switch(action.type){
+    case "NEWTEXT":
+      return {texto: action.payload}
+    default:
+      return state;
+  }
 
 }
 
-const store = createStore(rootReducer, initialState, applyMiddleware(...middleware));
+const store = createStore(rootReducer);
 
 export default store;
