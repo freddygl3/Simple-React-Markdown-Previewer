@@ -13,8 +13,8 @@ const Editor =()=>{
     }
 
     return(
-        <div>
-            <textarea id="editor" value={prueba} onChange={handleChange}/>
+        <div id="editorW" className="form-group">
+            <textarea id="editor" className="form-control h-100" value={prueba} onChange={handleChange}/>
         </div>
     )
 }
